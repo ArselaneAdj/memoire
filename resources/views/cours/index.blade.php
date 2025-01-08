@@ -15,6 +15,7 @@
                                             <h1>{{ $post->title }}</h1>
                                             <h1>{{ $post->text }}</h1>
                                             <h1>{{ $post->category->name }}</h1>
+                                            <a href="{{ asset($post->file_path) }}"></a>
                                         </div>
                                     </a>
                                     

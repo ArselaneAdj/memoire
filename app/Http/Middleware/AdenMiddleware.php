@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsAdminAndEnsMiddleware
+class AdenMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,7 +16,7 @@ class IsAdminAndEnsMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ( Auth::user()->role !=='enseignant') { 
+        if (!in_array(Auth::user()->role, ['admin', 'enseignant','etudiant'])) { 
             abort(403);
         }
         return $next($request);

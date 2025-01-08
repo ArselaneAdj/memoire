@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = ['title', 'text', 'category_id', 'id']; 
+    protected $fillable = ['title', 'text', 'category_id', 'file_path', 'id']; 
 
     public function category() 
     {

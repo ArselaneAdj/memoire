@@ -12,8 +12,8 @@
                     <div>
                         <div><h1>{{ $post->title }}</h1></div>
                         <div><h1>{{ $post->text }}</h1></div>
-                        <div><h2>{{ $post->category->name }}</h2>                             
-                        <img src="{{ Storage::url($post->file_path) }}" alt="Uploaded File"/>
+                        <div><h2>{{ $post->category->name }}</h2>
+                        <a href="{{ Storage::url($post->file_path) }}">Clicker pour telecharger le coure</a>                                
                     </div>
                 </div>
             </div>

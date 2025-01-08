@@ -11,29 +11,6 @@ use Illuminate\Http\Request;
  
 class PostController extends Controller
 {
-    
-
-    public function enroll(Request $request, $courseId)
-    {
-        // Get the authenticated user
-        $user = User::user();
-
-        // Find the course or fail if it doesn't exist
-        $course = Post::findOrFail($courseId);
-
-        // Check if the user is already enrolled
-        if ($user->courses()->where('course_id', $courseId)->exists()) {
-            return response()->json(['message' => 'You are already enrolled in this course.'], 400);
-        }
-
-        // Enroll the user in the course
-        $user->courses()->attach($course->id, ['enrolled_at' => now()]);
-
-        return response()->json(['message' => 'Enrollment successful!']);
-    }
-
-
-
 
     public function index()
     {
@@ -61,11 +38,16 @@ class PostController extends Controller
 
     if ($request->hasFile('file')) {
         $file = $request->file('file');
-        $fileName = time() . '_' . $file->getClientOriginalName();
-        $filePath = $file->storeAs('uploads', $fileName, 'public');
+        $randomId = rand(0000000,9999999);
+
+        $filExtions  = $file->getClientOriginalName();
+        $fileName = $randomId . '-' . time() . $filExtions;
+        $filePath = $file->storeAs('storage/uploads', $fileName, 'public');
         $data['file_path'] = $filePath;
+
     }
-        Post::create($request->validated()); 
+        // dd($data);
+        Post::create($data); 
         return redirect()->route('posts.index');
     }
  
