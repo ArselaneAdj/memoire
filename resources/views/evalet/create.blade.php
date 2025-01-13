@@ -1,35 +1,41 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Category Create') }}
+            {{ __('Evaluation') }}
         </h2>
     </x-slot>
  
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+        <div class="max-w-2xl mx-auto sm:px-6 lg:px-8"> <!-- Set max-width to 2xl (half the original) -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
+                <div class="p-6">
                     <form method="POST" enctype="multipart/form-data" action="{{ route('evalet.store') }}"> 
                         @csrf
- 
-                        <div>
+                        <div class="space-y-4">
+                            <!-- Champ Nom -->
                             <div>
-                                <label for="name">Name:</label>
+                                <label for="name" class="block text-lg font-medium text-gray-700">Nom :</label>
+                                <input type="text" name="name" id="name" class="form-control py-2 px-4 mt-1 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
                             </div>
-                            <input type="text" name="name" id="name" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"> 
+
+                            <!-- Champ Email -->
                             <div>
-                                <label for="email">Email:</label>
+                                <label for="email" class="block text-lg font-medium text-gray-700">Email :</label>
+                                <input type="email" name="email" id="email" class="form-control py-2 px-4 mt-1 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
                             </div>
-                            <input type="email" name="email" id="email" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+
+                            <!-- Champ Fichier -->
                             <div>
-                                <label for="file">Choose File:</label>
-                                <input type="file" name="file" id="file" required>
+                                <label for="file" class="block text-lg font-medium text-gray-700">Choisir un fichier :</label>
+                                <input type="file" name="file" id="file" class="form-control py-2 px-4 mt-1 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
                             </div>
-                        </div>
-                        <div>
-                            <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150"> 
-                                Save
-                            </button>
+
+                            <!-- Bouton Soumettre -->
+                            <div>
+                                <button type="submit" class="btn btn-primary w-full py-2 px-4 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 focus:ring-2 focus:ring-indigo-500">
+                                    Sauvegarder
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

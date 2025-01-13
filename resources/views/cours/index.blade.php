@@ -4,24 +4,31 @@
             {{ __('Cours pour etudiants') }} 
         </h2>
     </x-slot>
- 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                            @foreach($posts as $post)
-                                        <a href="{{ route('posts.show', $post->id) }}">
-                                        <div>
-                                            <h1>{{ $post->title }}</h1>
-                                            <h1>{{ $post->text }}</h1>
-                                            <h1>{{ $post->category->name }}</h1>
-                                            <a href="{{ asset($post->file_path) }}"></a>
-                                        </div>
-                                    </a>
-                                    
-                            @endforeach
-                </div>
+    <div class="py-5">
+        <div class="container">
+            <div class="row">
+                @foreach($posts as $post)
+                    <div class="col-md-6 mb-4">  <!-- 2 posts per row on medium and larger screens -->
+                        <div class="card bg-white shadow-sm rounded p-4">
+                            <div class="card-body">
+                                <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none text-dark">
+                                    <div class="mb-4">
+                                        <h2 class="card-title text-primary text-uppercase">{{ $post->title }}</h2>
+                                        <p class="card-text text-dark">
+                                            {{ \Illuminate\Support\Str::limit($post->text, 25) }}
+                                        </p>
+                                        <p class="text-muted">{{ $post->category->name }}</p>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
+    
+    
+       
+
 </x-app-layout>

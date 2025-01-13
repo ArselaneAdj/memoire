@@ -23,7 +23,7 @@ class NewPasswordController extends Controller
     }
 
     /**
-     * Handle an incoming new password request.
+     * Handle an incoming Nouveau mot de passe request.
      *
      * @throws \Illuminate\Validation\ValidationException
      */
@@ -46,7 +46,7 @@ class NewPasswordController extends Controller
                     'remember_token' => Str::random(60),
                 ])->save();
 
-                event(new PasswordReset($user));
+                event(Nouveau mot de passeReset($user));
             }
         );
 

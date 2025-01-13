@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Notes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
 {
@@ -11,11 +13,18 @@ class NotesController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $notes = Notes::all();
-        
-        return view('notes.index', compact('notes'));
-    }
+            {
+                $user = Auth::user(); 
+
+                // Find the record in the database where the user ID matches the current user's ID
+                $record = Category::where('id', $user->id)->first(); // Make sure 'id' is the correct column name
+
+                $notes = Notes::all();
+                
+                // Pass the correct variables to the view
+                return view('notes.index', compact('notes', 'record'));  // Use 'record' instead of 'mynote'
+            }
+
 
     /**
      * Show the form for creating a new resource.

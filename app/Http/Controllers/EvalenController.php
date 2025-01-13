@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\StudentEval;
 use Illuminate\Http\Request;
 
@@ -12,9 +13,10 @@ class EvalenController extends Controller
      */
     public function index()
     {
+        $cat = Post::all();
         $evals = StudentEval::all(); 
  
-        return view('evalen.index', compact('evals'));
+        return view('evalen.index', compact('evals','cat'));
     }
 
     /**

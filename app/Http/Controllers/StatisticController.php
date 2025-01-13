@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\User;
 
 use App\Models\Statistic;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class StatisticController extends Controller
         $count = Category::count();
         $counten = Category::where('role', 'enseignant')->count();
         $countet = Category::where('role', 'etudiant')->count();
-        $countad = Category::where('role', 'admin')->count();
+        $countad = Category::where('role', 'admin')->count() + User::where('role', 'admin')->count();
         $countco = Post::count();
         return view('statistics.index', compact('count','counten','countet','countad','countco'));
 

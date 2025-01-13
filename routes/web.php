@@ -2,14 +2,19 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Mail\TestMail;
+use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\FileController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-
+Route::get('/send-email', function () {
+    Mail::to('test@example.com')->send(new TestMail());
+    return 'Email Sent Successfully!';
+});
 
     Route::middleware('auth')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -41,6 +46,8 @@ Route::get('/', function () {
 
     Route::middleware('is_adEns')->group(function () { 
         Route::resource('etudiants', \App\Http\Controllers\EtudiantsController::class);
+        Route::put('/etudiants/{etudiant}', [\App\Http\Controllers\EtudiantsController::class, 'update'])->name('etudiants.update');
+
         Route::resource('evalen', \App\Http\Controllers\EvalenController::class);
 
 
