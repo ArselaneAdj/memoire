@@ -9,19 +9,23 @@
             <div class="row">
                 @foreach($posts as $post)
                     <div class="col-md-6 mb-4">  <!-- 2 posts per row on medium and larger screens -->
-                        <div class="card bg-white shadow-sm rounded p-4">
-                            <div class="card-body">
-                                <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none text-dark">
-                                    <div class="mb-4">
-                                        <h2 class="card-title text-primary text-uppercase">{{ $post->title }}</h2>
-                                        <p class="card-text text-dark">
-                                            {{ \Illuminate\Support\Str::limit($post->text, 25) }}
-                                        </p>
-                                        <p class="text-muted">{{ $post->category->name }}</p>
-                                    </div>
-                                </a>
-                            </div>
+                        <a href="{{ route('posts.show', $post->id) }}" class="text-decoration-none text-dark">
+                            <div class="card bg-white shadow-sm rounded p-4">
+                            
+                                <div class="card-body">
+                                    
+                                        <div class="mb-4">
+                                            <h2 class="card-title text-primary text-uppercase">{{ $post->title }}</h2>
+                                            <p class="card-text text-dark">
+                                                {{ \Illuminate\Support\Str::limit($post->text, 25) }}
+                                            </p>
+                                            <p class="text-muted">{{ $post->category->name }}</p>
+                                        </div>
+                                
+                                </div>
+                            
                         </div>
+                    </a>
                     </div>
                 @endforeach
             </div>

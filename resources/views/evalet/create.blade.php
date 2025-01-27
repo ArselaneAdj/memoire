@@ -9,13 +9,22 @@
         <div class="max-w-2xl mx-auto sm:px-6 lg:px-8"> <!-- Set max-width to 2xl (half the original) -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
+                    @if ($errors->any()) 
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif 
                     <form method="POST" enctype="multipart/form-data" action="{{ route('evalet.store') }}"> 
                         @csrf
                         <div class="space-y-4">
                             <!-- Champ Nom -->
                             <div>
                                 <label for="name" class="block text-lg font-medium text-gray-700">Nom :</label>
-                                <input type="text" name="name" id="name" class="form-control py-2 px-4 mt-1 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" required>
+                                <input required type="text" name="name" id="name" class="form-control py-2 px-4 mt-1 w-full border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500" >
                             </div>
 
                             <!-- Champ Email -->

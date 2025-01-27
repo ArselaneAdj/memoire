@@ -5,18 +5,16 @@ use Illuminate\Support\Facades\Route;
 use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\FileController;
-
+use App\Http\Controllers\SearchController;
 
 Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/send-email', function () {
-    Mail::to('test@example.com')->send(new TestMail());
-    return 'Email Sent Successfully!';
-});
+
 
     Route::middleware('auth')->group(function () {
+        Route::get('/search', [SearchController::class, 'index'])->name('search');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
@@ -47,8 +45,8 @@ Route::get('/send-email', function () {
     Route::middleware('is_adEns')->group(function () { 
         Route::resource('etudiants', \App\Http\Controllers\EtudiantsController::class);
         Route::put('/etudiants/{etudiant}', [\App\Http\Controllers\EtudiantsController::class, 'update'])->name('etudiants.update');
-
         Route::resource('evalen', \App\Http\Controllers\EvalenController::class);
+
 
 
 
@@ -57,6 +55,7 @@ Route::get('/send-email', function () {
         Route::resource('cours', \App\Http\Controllers\CoursController::class);
         Route::resource('evalet', \App\Http\Controllers\EvaletController::class);
         Route::resource('notes', \App\Http\Controllers\NotesController::class);
+        Route::resource('enroll', \App\Http\Controllers\EnrollController::class);
 
 
 

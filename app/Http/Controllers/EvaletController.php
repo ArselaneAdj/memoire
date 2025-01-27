@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\StoreStudentEvalRequest;
 use App\Models\Category;
 use App\Models\StudentEval;
 use Illuminate\Http\Request;
-
 class EvaletController extends Controller
 {
     /**
@@ -31,7 +31,7 @@ class EvaletController extends Controller
      //Store a newly created resource in storage.
      
 
-     public function store(Request $request) 
+     public function store(StoreStudentEvalRequest $request) 
      {
          // Validate if file is present in the request
          $validatedData = $request->validate([

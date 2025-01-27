@@ -15,7 +15,7 @@ class StatisticController extends Controller
      */
     public function index()
     {
-        $count = Category::count();
+        $count = Category::count()+1;
         $counten = Category::where('role', 'enseignant')->count();
         $countet = Category::where('role', 'etudiant')->count();
         $countad = Category::where('role', 'admin')->count() + User::where('role', 'admin')->count();

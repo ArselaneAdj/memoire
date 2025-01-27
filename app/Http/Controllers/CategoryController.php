@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
-
+use App\Http\Requests\StoreCategoryRequest;
+use Carbon\Carbon;
+use Carbon\CarbonPeriod;
+use Illuminate\Support\Collection;
+use IcehouseVentures\LaravelChartjs\Facades\Chartjs;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Container\Attributes\Auth;
@@ -16,7 +20,6 @@ class CategoryController extends Controller
      */
     
      
-
     public function index()
     {
         $categories = Category::all(); 
@@ -35,22 +38,31 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreCategoryRequest $request)
     {
         
         Category::create([
             'name' => $request->input('name'),
+            'prenom' => $request->input('prenom'),
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'adresse' => $request->input('adresse'),
-            'role' => $request->input('role')
+            'role' => $request->input('role'),
+            'birthdate' => $request->input('birthdate'),
+            'number' => $request->input('number')
+
+
         ]);
         User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'adresse' => $request->input('adresse'),
-            'role' => $request->input('role')
+            'role' => $request->input('role'),
+            'birthdate' => $request->input('birthdate'),
+            'number' => $request->input('number')
+
+
         ]);
  
         return redirect()->route('categories.index');

@@ -22,33 +22,32 @@
                                        
                     <form  enctype="multipart/form-data" method="POST" action="{{ route('posts.store') }}">
                         @csrf
- 
-                        <div>
-                            <div>
-                                <label for="title">Title:</label>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="title" class="form-label">Title</label>
+                                <input required value="{{ old('title') }}" type="text" name="title" id="title" class="form-control" placeholder="enter title">
                             </div>
-                            <input type="text" name="title" id="title" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            <div class="col-md-6 mb-3">
+                                <label for="text" class="form-label">Text</label>
+                                <textarea required value="{{ old('text') }}" name="text" id="text" class="form-control" placeholder="enter text"></textarea>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="file" class="form-label">Choose File</label>
+                                <input required value="{{ old('file') }}" type="file" class="form-control" name="file" id="file" >
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="category_id" class="form-label">Category</label>
+                                <select required name="category_id" id="category_id" class="form-select">
+                                    <option value=""> Choose category</option>
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}" {{ $category->id ==  old('category_id') ? 'selected' : ''  }}>{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                         </div>
-                        <div>
-                            <div>
-                                <label for="text">Text:</label>
-                            </div>
-                            <textarea name="text" id="text" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"></textarea>
-                        </div>
-                        <div>
-                            <div>
-                                <label for="file">Choose File:</label>
-                                <input type="file" name="file" id="file" required>
-                            </div>
-                            <div>
-                                <label for="category_id">Category:</label>
-                            </div>
-                            <select name="category_id" id="category_id" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
-                                @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
+                       
+                        
+                        
                         <div>
                             <button type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
                                 Save

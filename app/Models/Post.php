@@ -13,6 +13,8 @@ class Post extends Model
     public function category() 
     {
         return $this->belongsTo(Category::class);
+        return $this->belongsToMany(Category::class, 'enroll', 'posts_id', 'categories_id');
+
     }
 
     

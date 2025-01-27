@@ -44,8 +44,8 @@
                             <!-- Course Selection -->
                             <div class="mb-4">
                                 <label for="cour" class="block text-lg font-medium text-gray-700">Cours :</label>
-                                <select name="cour" id="cour" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md shadow-sm">
-                                    <option value="" disabled selected>Choisir un cours</option>
+                                <select required name="cour" id="cour" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md shadow-sm">
+                                    <option  value="" disabled selected>Choisir un cours</option>
                                     @foreach($cat as $ca)
                                         <option value="{{ $ca->id }}">{{ $ca->title }}</option>
                                     @endforeach
@@ -55,7 +55,7 @@
                             <!-- File Upload -->
                             <div class="mb-4">
                                 <label for="file" class="block text-lg font-medium text-gray-700">Choisir un fichier :</label>
-                                <input type="file" name="file" id="file" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md shadow-sm" required>
+                                <input required type="file" name="file" id="file" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md shadow-sm" required>
                             </div>
 
                             <!-- Submit Button -->
