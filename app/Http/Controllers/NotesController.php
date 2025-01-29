@@ -39,7 +39,7 @@ class NotesController extends Controller
      */
     public function store(Request $request) 
      {
-        $notes = Notes::all();
+        
 
          // Validate if file is present in the request
          $validatedData = $request->validate([

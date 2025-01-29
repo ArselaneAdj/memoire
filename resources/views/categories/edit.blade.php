@@ -19,6 +19,10 @@
                             </div>
                             <input type="text" name="name" id="name" value="{{$category->name}}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"> 
                             <div>
+                                <label for="prenom">Prenom:</label>
+                            </div>
+                            <input type="text" name="prenom" id="prenom" value="{{$category->prenom}}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"> 
+                            <div>
                                 <label for="email">Email:</label>
                             </div>
                             <input type="email" name="email" id="email" value="{{$category->email}}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"> 
@@ -30,6 +34,10 @@
                                 <label for="adresse">Adresse:</label>
                             </div>
                             <input type="text" name="adresse" id="adresse" value="{{$category->adresse}}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
+                            <div>
+                                <label for="number">Numero de telephone:</label>
+                            </div>
+                            <input type="text" name="number" id="number" value="{{$category->number}}" class="border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm"> 
                             <div>
                                 <label for="role">Select Role:</label>
                                 <select name="role" id="role" required>

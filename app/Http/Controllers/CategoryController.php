@@ -92,9 +92,11 @@ class CategoryController extends Controller
     {
         $category->update([
             'name' => $request->input('name'),
+            'prenom' => $request->input('prenom'),
             'email' => $request->input('email'),
             'password' => $request->input('password'),
             'adresse' => $request->input('adresse'),
+            'number' => $request->input('number'),
             'role' => $request->input('role')
         ]);
         return redirect()->route('categories.index'); 

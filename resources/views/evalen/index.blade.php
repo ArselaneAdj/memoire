@@ -47,7 +47,7 @@
                                 <select required name="cour" id="cour" class="mt-1 block w-full px-4 py-2 bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-md shadow-sm">
                                     <option  value="" disabled selected>Choisir un cours</option>
                                     @foreach($cat as $ca)
-                                        <option value="{{ $ca->id }}">{{ $ca->title }}</option>
+                                        <option value="{{ $ca->title }}">{{ $ca->title }}</option>
                                     @endforeach
                                 </select>
                             </div>

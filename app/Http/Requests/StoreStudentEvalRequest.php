@@ -24,7 +24,7 @@ class StoreStudentEvalRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'file'=> 'required|mimes:jpg,png,gif, doc, pdf, docx|max:5125'
+            'file'=> 'required|mimes:jpg,png,gif,doc,pdf,docx|max:5125'
 
         ];
     }

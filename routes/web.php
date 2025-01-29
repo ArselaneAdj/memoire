@@ -6,6 +6,8 @@ use App\Mail\TestMail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\SearchController;
+use App\Models\Category;
+use App\Models\Post;
 
 Route::get('/', function () {
     return view('auth.login');
@@ -19,9 +21,17 @@ Route::get('/', function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::get('/dashboard', function () {
-            return view('dashboard');
+            $count = Category::count()+1;
+            $countco = Post::count();
+            $lastMonthCount = Category::whereMonth('created_at', now()->subMonth()->month)->count() + 1;
+            // Calculate percentage change
+            $percentage = $lastMonthCount ? round((($count - $lastMonthCount) / $lastMonthCount) * 100, 2) : 0;
+
+            $lastMonthPost = Category::whereMonth('created_at', now()->subMonth()->month)->count() + 1;
+            // Calculate percentage change
+            $diff = $lastMonthPost ? round((($countco - $lastMonthPost) / $lastMonthCount)) : 0;
+            return view('dashboard',compact('count','countco','percentage','diff'));
         })->name('dashboard');
-    
 
     Route::middleware('is_admin')->group(function () { 
         Route::post('/file-upload', [FileController::class, 'upload'])->name('file.upload');
@@ -36,6 +46,7 @@ Route::get('/', function () {
     Route::middleware('is_aden')->group(function () { 
         Route::resource('categories', \App\Http\Controllers\CategoryController::class); 
         Route::resource('posts', \App\Http\Controllers\PostController::class);
+        Route::resource('notes', \App\Http\Controllers\NotesController::class);
 
 
     });
@@ -49,12 +60,10 @@ Route::get('/', function () {
 
 
 
-
     });
     Route::middleware('is_etd')->group(function () { 
         Route::resource('cours', \App\Http\Controllers\CoursController::class);
         Route::resource('evalet', \App\Http\Controllers\EvaletController::class);
-        Route::resource('notes', \App\Http\Controllers\NotesController::class);
         Route::resource('enroll', \App\Http\Controllers\EnrollController::class);
 
 

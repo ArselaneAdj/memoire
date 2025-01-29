@@ -18,6 +18,7 @@ class SearchController extends Controller
             ->orWhere('adresse', 'like', '%' . $query . '%')
             ->orWhere('birthdate', 'like', '%' . $query . '%')
             ->orWhere('number', 'like', '%' . $query . '%')
+            ->orWhere('prenom', 'like', '%' . $query . '%')
             ->get();
 
         // Check if the request is AJAX
