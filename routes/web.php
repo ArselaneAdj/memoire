@@ -27,9 +27,9 @@ Route::get('/', function () {
             // Calculate percentage change
             $percentage = $lastMonthCount ? round((($count - $lastMonthCount) / $lastMonthCount) * 100, 2) : 0;
 
-            $lastMonthPost = Category::whereMonth('created_at', now()->subMonth()->month)->count() + 1;
+            $lastMonthPost = Post::whereMonth('created_at', now()->subMonth()->month)->count() ;
             // Calculate percentage change
-            $diff = $lastMonthPost ? round((($countco - $lastMonthPost) / $lastMonthCount)) : 0;
+            $diff = abs($lastMonthPost - $countco);
             return view('dashboard',compact('count','countco','percentage','diff'));
         })->name('dashboard');
 

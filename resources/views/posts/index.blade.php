@@ -23,13 +23,13 @@
                             </a>
                             <div class="mt-4 flex space-x-4">
                                 <!-- Edit Link -->
-                                <a href="{{ route('posts.edit', $post) }}" class="text-indigo-600 hover:text-indigo-800 transition duration-300">Edit</a>
+                                <a href="{{ route('posts.edit', $post) }}" class="text-indigo-600 hover:text-indigo-800 transition duration-300">Editer</a>
                                 <!-- Delete Form -->
                                 @if (auth()->check() && (auth()->user()->role === 'admin'))
                                     <form method="POST" action="{{ route('posts.destroy', $post) }}" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 hover:text-red-800 transition duration-300">Delete</button>
+                                        <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-600 hover:text-red-800 transition duration-300">Supprimer</button>
                                     </form>
                                 @endif
                             </div>

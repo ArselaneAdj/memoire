@@ -38,7 +38,7 @@
                 </div>
 
                 <!-- Liens rapides -->
-                <h3 class="text-lg font-semibold text-gray-800">Quick Actions</h3>
+                <h3 class="text-lg font-semibold text-gray-800">Actions vites</h3>
 
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
                     <a href="{{ route('categories.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">
@@ -53,8 +53,8 @@
                         <h3 class="text-lg font-semibold text-gray-800">Paramètres</h3>
                         <p class="text-sm text-gray-500">Configurer les paramètres du compte</p>
                     </a>
-                    <a href="{{ route('posts.create') }}" class=" font-semibold bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">Create Post</a>
-                    <a href="{{ route('categories.create') }}" class="font-semibold bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">Add User</a>
+                    <a href="{{ route('posts.create') }}" class=" font-semibold bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">Ajouter un cours</a>
+                    <a href="{{ route('categories.create') }}" class="font-semibold bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">Ajouter un utilisateur</a>
                 </div>
             @endif       
         </div>
