@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Category Create') }}
+            {{ __('Ajouter un utilisateur') }}
         </h2>
     </x-slot>
  
@@ -61,7 +61,7 @@
                                     <option value="">-- Choose a Role --</option>
                                     <option value="etudiant">Etudiant</option>
                                     <option value="admin">Admin</option>
-                                    <option value="enseignant">Enseignant</option>
+                                    <option value="enseignant">Enseigniant</option>
                                 </select>                            </div>
                         </div>
                         <div>

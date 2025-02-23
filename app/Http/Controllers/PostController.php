@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\StorePostRequest;
-
+use App\Notifications\OrderShipped;
 use App\Models\Post;
 use App\Models\User;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
- 
+use Illuminate\Support\Facades\Auth ;
+
 class PostController extends Controller
 {
 
@@ -77,6 +78,11 @@ class PostController extends Controller
             'text' => $request->input('text'),
             'category_id' => $request->input('category_id'),
         ]);
+        
+
+        $user = Auth::user(); // Get the authenticated user
+        $user->notify(new OrderShipped());
+
  
         return redirect()->route('posts.index');
     }

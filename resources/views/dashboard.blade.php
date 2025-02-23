@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Tableau de bord') }}
         </h2>
     </x-slot>
 
@@ -12,13 +12,14 @@
                     {{ __("Bonjour" )  }} {{Auth::user()->name}}
                 </div>
             </div>
-            @if (auth()->check() && (auth()->user()->role === 'admin'))
                             <!-- Cartes de statistiques -->
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                         <h3 class="text-lg font-semibold text-gray-800">Utilisateurs totaux</h3>
                         <p class="text-2xl font-bold text-indigo-600">{{ $count }}</p>
+                        @if (auth()->check() && (auth()->user()->role === 'admin')||(auth()->user()->role === 'enseignant'))
                         <p class="text-sm text-gray-500">+{{ $percentage }}% par rapport au mois dernier</p>
+                        @endif
                     </div>
                     {{-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                         <h3 class="text-lg font-semibold text-gray-800">Revenu total</h3>
@@ -28,7 +29,9 @@
                     <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                         <h3 class="text-lg font-semibold text-gray-800">Cours actifs</h3>
                         <p class="text-2xl font-bold text-blue-600">{{ $countco }}</p>
+                        @if (auth()->check() && (auth()->user()->role === 'admin')||(auth()->user()->role === 'enseignant'))
                         <p class="text-sm text-gray-500">+{{ $diff }} par rapport au mois dernier </p>
+                        @endif
                     </div>
                     {{-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6">
                         <h3 class="text-lg font-semibold text-gray-800">Tâches en attente</h3>
@@ -41,6 +44,7 @@
                 <h3 class="text-lg font-semibold text-gray-800">Actions vites</h3>
 
                 <div class="mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-4">
+                    @if (auth()->check() && (auth()->user()->role === 'admin')||(auth()->user()->role === 'enseignant'))
                     <a href="{{ route('categories.index') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">
                         <h3 class="text-lg font-semibold text-gray-800">Gérer les utilisateurs</h3>
                         <p class="text-sm text-gray-500">Voir et gérer les comptes utilisateurs</p>
@@ -49,14 +53,18 @@
                         <h3 class="text-lg font-semibold text-gray-800">Gérer les cours</h3>
                         <p class="text-sm text-gray-500">Accéder aux cours détaillés et aux enseigniants</p>
                     </a>
+                    @endif
                     <a href="{{ route('profile.edit') }}" class="bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">
                         <h3 class="text-lg font-semibold text-gray-800">Paramètres</h3>
                         <p class="text-sm text-gray-500">Configurer les paramètres du compte</p>
                     </a>
+                    @if (auth()->check() && (auth()->user()->role === 'admin')||(auth()->user()->role === 'enseignant'))
                     <a href="{{ route('posts.create') }}" class=" font-semibold bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">Ajouter un cours</a>
+                    @endif
+                    @if (auth()->check() && (auth()->user()->role === 'admin'))
                     <a href="{{ route('categories.create') }}" class="font-semibold bg-white overflow-hidden shadow-sm sm:rounded-lg p-6 hover:bg-gray-50 transition duration-300">Ajouter un utilisateur</a>
+                    @endif
                 </div>
-            @endif       
         </div>
     </div>
 </x-app-layout>

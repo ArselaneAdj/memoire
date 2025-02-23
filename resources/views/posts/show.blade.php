@@ -12,7 +12,7 @@
                     <div class="mb-4">
                         <h1 class="fs-1 font-semibold text-primary mb-4">{{ strtoUpper($post->title) }}</h1>
                         <p class="text-lg text-dark mb-4">{{ $post->text }}</p>
-                        <h2 class="text-xl text-muted mb-4">Enseignant: {{ $post->category->name }}</h2>
+                        <h2 class="text-xl text-muted mb-4">Enseigniant: {{ $post->category->name }}</h2>
                         <a href="{{ Storage::url($post->file_path) }}" class="btn btn-primary text-white">
                             Clicker pour télécharger le cours
                         </a>

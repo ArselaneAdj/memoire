@@ -13,11 +13,11 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                        {{ __('Tableau de bord') }}
                     </x-nav-link>
                         @if (auth()->check() && (auth()->user()->role === 'admin' || auth()->user()->role === 'enseignant'))
                             <a href="{{ route('categories.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
-                                Utilisateurs
+                                Utilisateurs 
                             </a>
                         @endif
 
@@ -29,37 +29,49 @@
 
                         @if (auth()->check() && (auth()->user()->role === 'admin'))
                             <a href="{{ route('statistics.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
-                                Statistics
+                                Statistiques
                             </a>
                         @endif
 
                         @if (auth()->check() && (auth()->user()->role === 'etudiant'))
                         <a href="{{ route('cours.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
-                            Cours pour etudiant
+                            Cours pour etudiant 
+                            <sup class="text-red-500 text-lg font-bold">
+                                {{ $countp ?? 0 }}
+                            </sup>
                         </a>
                         @endif
 
                         @if (auth()->check() && (auth()->user()->role === 'enseignant'))
                             <a href="{{ route('etudiants.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
                                 List d'etudiants
+                                <sup class="text-red-500 text-lg font-bold">
+                                    {{ $countet ?? 0 }}
+                                </sup>
                             </a>
                         @endif
 
                         @if (auth()->check() && (auth()->user()->role === 'etudiant'))
                         <a href="{{ route('evalet.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
-                            Evaluations d'etudiants
+                            Evaluations d'etudiants 
                         </a>
                         @endif
 
                         @if (auth()->check() && (auth()->user()->role === 'enseignant'))
                         <a href="{{ route('evalen.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
                             Evaluations pour enseigniant
+                            <sup class="text-red-500 text-lg font-bold">
+                                {{ $counts ?? 0 }}
+                            </sup>
                         </a>
                         @endif
 
                         @if (auth()->check() && (auth()->user()->role === 'etudiant'))
                         <a href="{{ route('notes.index') }}" class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out"> 
                             Notes
+                            <sup class="text-red-500 text-lg font-bold">
+                                {{ $counte ?? 0 }}
+                            </sup>
                         </a>
                         @endif
 
